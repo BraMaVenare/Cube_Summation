@@ -133,6 +133,12 @@ namespace Cube_Summation.Controllers
                         return "El número ingresado no cumple las caracteristicas";
                     }
                     break;
+                case "Other":
+                    if (number < 1 || number > 10000)
+                    {
+                        return "El número ingresado no cumple las caracteristicas";
+                    }
+                    break;
             }
             return string.Empty;
         }
