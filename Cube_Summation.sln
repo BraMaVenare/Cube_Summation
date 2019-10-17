@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.202
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cube_Summation", "Cube_Summation\Cube_Summation.csproj", "{44D41D44-F892-40F8-9C9A-1F58DB45B31E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cube_Summation.Tests", "Cube_Summation.Tests\Cube_Summation.Tests.csproj", "{8ADF6D33-4EDF-4F41-85ED-2A46DF59B4A9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44D41D44-F892-40F8-9C9A-1F58DB45B31E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44D41D44-F892-40F8-9C9A-1F58DB45B31E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44D41D44-F892-40F8-9C9A-1F58DB45B31E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44D41D44-F892-40F8-9C9A-1F58DB45B31E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8ADF6D33-4EDF-4F41-85ED-2A46DF59B4A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8ADF6D33-4EDF-4F41-85ED-2A46DF59B4A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8ADF6D33-4EDF-4F41-85ED-2A46DF59B4A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8ADF6D33-4EDF-4F41-85ED-2A46DF59B4A9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {78D7A195-6D98-4EE5-B338-F6C988BF87CF}
+	EndGlobalSection
+EndGlobal
