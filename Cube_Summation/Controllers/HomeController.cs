@@ -1,4 +1,5 @@
-﻿using Cube_Summation.Process;
+﻿using Cube_Summation.Models;
+using Cube_Summation.Process;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,10 @@ namespace Cube_Summation.Controllers
     public class HomeController : Controller
     {
         #region Global values
-        //Creo mi objeto cubo 
-        int[,,] Cube_General;
+        private DataCube cube = new DataCube();
 
         //Creo un objeto global de tipo validations para realizar las respectivas validaciones.
-        Validations val = new Validations(); 
+        Validations val = new Validations();
         #endregion
 
         #region Actions Results
@@ -66,6 +66,15 @@ namespace Cube_Summation.Controllers
                 string Validation = string.Empty;
                 string[] SaveNumbers = new string[2];
                 SaveNumbers = CubeOp.Split(' ');
+                Validation = val.NumericalsValidations("LengthCube", SaveNumbers.Length);
+                if (!string.IsNullOrEmpty(Validation))
+                {
+                    return Json(new
+                    {
+                        IsSuccess = false,
+                        Message = Validation,
+                    });
+                }
                 Validation = val.StringValidations("CubeOpStr", SaveNumbers[0]);
                 if (!string.IsNullOrEmpty(Validation))
                 {
@@ -104,7 +113,6 @@ namespace Cube_Summation.Controllers
                         Message = Validation,
                     });
                 }
-                Cube_General = new int[Cube, Cube, Cube];
                 return Json(new
                 {
                     IsSuccess = true,
@@ -120,7 +128,27 @@ namespace Cube_Summation.Controllers
                     Message = "Se ha presentado un error " + ex.Message,
                 });
             }
-        } 
+        }
+
+        public JsonResult Do_Operations()
+        {
+            try
+            {
+                return Json(new
+                {
+                    IsSuccess = false,
+                    Message = "Se ha presentado un error "
+                });
+            }
+            catch (Exception ex)
+            {
+                return Json(new
+                {
+                    IsSuccess = false,
+                    Message = "Se ha presentado un error " + ex.Message,
+                });
+            }
+        }
         #endregion
     }
 }

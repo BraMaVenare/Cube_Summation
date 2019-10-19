@@ -7,5 +7,6 @@ namespace Cube_Summation.Process
 {
     public class Querys
     {
+
     }
 }

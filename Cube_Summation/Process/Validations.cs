@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Cube_Summation.Process
+﻿namespace Cube_Summation.Process
 {
+    using System.Text.RegularExpressions;
     public class Validations
     {
         public string NumericalsValidations(string strType, int number)
@@ -35,6 +31,12 @@ namespace Cube_Summation.Process
                         return "El número ingresado no cumple las caracteristicas";
                     }
                     break;
+                case "LengthCube":
+                    if (number <= 1)
+                    {
+                        return "Debe separar los valores del cubo y las operaciones por un espacio en blanco";
+                    }
+                    break;
             }
             return string.Empty;
         }
@@ -48,10 +50,10 @@ namespace Cube_Summation.Process
                     {
                         return "Este campo no puede estar vacio, ingrese valores";
                     }
-                    Regex reg = new Regex(@"^\d$");
+                    Regex reg = new Regex(@"[a-zA-Z]+");
                     if (reg.IsMatch(word))
                     {
-                        return "Solamente se permiten numeros en este campo.";
+                        return "Solamente se permiten números en este campo.";
                     }
                     break;
             }

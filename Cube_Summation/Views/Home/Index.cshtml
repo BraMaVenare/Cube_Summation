@@ -2,12 +2,19 @@
     ViewBag.Title = "Unique Page";
 }
 <script>
-    var Casos_For_End = 0; 
+    var Casos_For_End = 0;
     var Value_Operations = 0;
+    var Value_Cube = 0;
+    var arrayAsignation = [];
+    var arraySumattions = []; 
 
     $("#contains_cases").ready(function () {
-        $("#contains_cases").hide();
-         $("#btnSend_Cases").attr("disabled", false);
+        $("#btnSend_Cases").attr("disabled", false);
+        $("#txtNum_Cases").attr("disabled", false);
+        $("#txtCubeOperations").attr("disabled", true);
+        $("#btnCubeOperations").attr("disabled", true);
+        $("#txtOperation").attr("disabled", true);
+        $("#btnSendOperation").attr("disabled", true);
     });
 
     $(document).on("click", "#btnSend_Cases", function () {
@@ -23,6 +30,10 @@
                     Casos_For_End = result.Result;
                     $("#contains_cases").show();
                     $("#btnSend_Cases").attr("disabled", true);
+                    $("#txtNum_Cases").attr("disabled", true);
+                    $("#txtCubeOperations").attr("disabled", false);
+                    $("#btnCubeOperations").attr("disabled", false);
+                    $("#Console_Cube").append("Caso(s) total(es) de prueba: " + Casos_For_End + " <br />");
                 } else {
                     alert(result.Message);
                 }
@@ -44,9 +55,14 @@
             dataType: "json",
             success: function (result) {
                 if (result.IsSuccess) {
-                    if (Casos_For_End > 0) {
-
-                    }
+                    Value_Operations = result.Value_Operations;
+                    Value_Cube = result.Value_Cube;
+                    $("#txtCubeOperations").attr("disabled", true);
+                    $("#btnCubeOperations").attr("disabled", true);
+                    $("#txtOperation").attr("disabled", false);
+                    $("#btnSendOperation").attr("disabled", false);
+                    $("#Console_Cube").append("Tamaño del cubo: " + Value_Cube + " <br />");
+                    $("#Console_Cube").append("Operaciones a realizar: " + Value_Operations + " <br />");
                 } else {
                     alert(result.Message);
                 }
@@ -58,15 +74,36 @@
 
     });
 
+
 </script>
-<div class="col-md-12 jumbotron text-center">
-    <input type="number" placeholder="Ingrese su número de casos" id="txtNum_Cases" class="col-md-8 form-control" min="1" max="50" />
+<div class="col-md-12 panel panel-body panel-default text-center">
+    <div class="col-md-8">
+        <input type="number" placeholder="Ingrese su número de casos" id="txtNum_Cases" class="form-control" min="1" max="50" style="max-width:100%" />
+    </div>
     <button class="btn btn-success col-md-4" id="btnSend_Cases">Enviar casos</button>
 </div>
 <br />
-<div class="col-md-6 panel panel-default panel-body" id="contains_cases">
+<div class="col-md-12 panel panel-default panel-body" id="contains_cases">
     <div class="col-md-8">
-        <input type="text" placeholder="Ingrese el tamaño de su matriz 3d y el # de operaciones" id="txtCubeOperations" class="col-md-12 form-control" />
+        <input type="text" placeholder="Ingrese el tamaño de su matriz 3d y el # de operaciones" id="txtCubeOperations" class="form-control" style="max-width:100%"/>
     </div>
     <button class="btn btn-success col-md-4" id="btnCubeOperations">Enviar info</button>
+</div>
+
+<div class="col-md-12 panel panel-default panel-body" id="contains_cases">
+    <div class="col-md-7 panel panel-body panel-default" id="SpaceOperations">
+        <div class="col-md-8">
+            <input type="text" placeholder="Ingrese su operación" id="txtOperation" class="form-control" style="max-width:100%" />
+        </div>
+        <button class="btn btn-success col-md-4" id="btnSendOperation">Enviar operacion</button>
+        <br />
+        <br />
+        <div class="col-md-12 panel panel-body panel-default">
+            <p id="Console_Operations"></p>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-4 panel panel-body panel-default">
+        <p id="Console_Cube"></p>
+    </div>
 </div>
